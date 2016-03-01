@@ -4,6 +4,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get clean
 #nfs install
 RUN apt-get install -y nfs-kernel-server
 RUN /etc/init.d/rpcbind start
+RUN update-rc.d rpcbind enable
 VOLUME /mnt
 RUN chown nobody:nogroup /mnt
 RUN echo "/mnt       *(rw,sync,fsid=0,no_root_squash,no_subtree_check)" >> /etc/exports
